@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -28,7 +29,7 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userId;
 
-	@Column(name = "username")
+	@Column(name = "username", unique = true)
 	@NotNull
 	private String username;
 
@@ -44,7 +45,8 @@ public class User implements Serializable {
 	@NotNull
 	private String lastName;
 
-	@Column(name = "email")
+	@Column(name = "email", unique = true)
+	@Email
 	@NotNull
 	private String email;
 
@@ -58,7 +60,7 @@ public class User implements Serializable {
 	@NotNull
 	private String roleType;
 
-//	 private List<Reimbursement> reimbursements = new ArrayList<Reimbursement>();
+	// private List<Reimbursement> reimbursements = new ArrayList<Reimbursement>();
 
 	public User() {
 		super();
@@ -141,13 +143,13 @@ public class User implements Serializable {
 		this.roleType = roleType;
 	}
 
-//	public List<Reimbursement> getReimbursements() {
-//		return reimbursements;
-//	}
-//
-//	public void setReimbursements(List<Reimbursement> reimbursements) {
-//		this.reimbursements = reimbursements;
-//	}
+	// public List<Reimbursement> getReimbursements() {
+	// return reimbursements;
+	// }
+	//
+	// public void setReimbursements(List<Reimbursement> reimbursements) {
+	// this.reimbursements = reimbursements;
+	// }
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

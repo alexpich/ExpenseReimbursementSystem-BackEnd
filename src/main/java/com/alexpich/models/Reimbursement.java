@@ -55,21 +55,13 @@ public class Reimbursement implements Serializable {
 	@NotNull
 	private int typeId;
 
-	@Column(name = "status")
-	@NotNull
-	private String status;
-
-	@Column(name = "type")
-	@NotNull
-	private String type;
-
 	public Reimbursement() {
 		super();
 	}
 
 	public Reimbursement(@NotNull double amount, @NotNull Date timeSubmitted, @NotNull Date timeResolved,
 			@NotNull String description, @NotNull int author, @NotNull int resolver, @NotNull int statusId,
-			@NotNull int typeId, @NotNull String status, @NotNull String type) {
+			@NotNull int typeId) {
 		super();
 		this.amount = amount;
 		this.timeSubmitted = timeSubmitted;
@@ -79,8 +71,6 @@ public class Reimbursement implements Serializable {
 		this.resolver = resolver;
 		this.statusId = statusId;
 		this.typeId = typeId;
-		this.status = status;
-		this.type = type;
 	}
 
 	public int getReimbursementId() {
@@ -155,22 +145,6 @@ public class Reimbursement implements Serializable {
 		this.typeId = typeId;
 	}
 
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -186,11 +160,9 @@ public class Reimbursement implements Serializable {
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + reimbursementId;
 		result = prime * result + resolver;
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + statusId;
 		result = prime * result + ((timeResolved == null) ? 0 : timeResolved.hashCode());
 		result = prime * result + ((timeSubmitted == null) ? 0 : timeSubmitted.hashCode());
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		result = prime * result + typeId;
 		return result;
 	}
@@ -217,11 +189,6 @@ public class Reimbursement implements Serializable {
 			return false;
 		if (resolver != other.resolver)
 			return false;
-		if (status == null) {
-			if (other.status != null)
-				return false;
-		} else if (!status.equals(other.status))
-			return false;
 		if (statusId != other.statusId)
 			return false;
 		if (timeResolved == null) {
@@ -234,11 +201,6 @@ public class Reimbursement implements Serializable {
 				return false;
 		} else if (!timeSubmitted.equals(other.timeSubmitted))
 			return false;
-		if (type == null) {
-			if (other.type != null)
-				return false;
-		} else if (!type.equals(other.type))
-			return false;
 		if (typeId != other.typeId)
 			return false;
 		return true;
@@ -248,8 +210,7 @@ public class Reimbursement implements Serializable {
 	public String toString() {
 		return "Reimbursement [reimbursementId=" + reimbursementId + ", amount=" + amount + ", timeSubmitted="
 				+ timeSubmitted + ", timeResolved=" + timeResolved + ", description=" + description + ", author="
-				+ author + ", resolver=" + resolver + ", statusId=" + statusId + ", typeId=" + typeId + ", status="
-				+ status + ", type=" + type + "]";
+				+ author + ", resolver=" + resolver + ", statusId=" + statusId + ", typeId=" + typeId + "]";
 	}
 
 }
