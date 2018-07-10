@@ -26,7 +26,7 @@ public class User implements Serializable {
 	@Id
 	@Column(name = "user_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long userId;
+	private int userId;
 
 	@Column(name = "username")
 	@NotNull
@@ -58,7 +58,12 @@ public class User implements Serializable {
 	@NotNull
 	private String roleType;
 
-	private List<Reimbursement> reimbursements = new ArrayList<Reimbursement>();
+//	 private List<Reimbursement> reimbursements = new ArrayList<Reimbursement>();
+
+	public User() {
+		super();
+
+	}
 
 	public User(@NotNull String username, @NotNull String password, @NotNull String firstName, @NotNull String lastName,
 			@NotNull String email, @NotNull @Min(1) @Max(2) int roleId, @NotNull String roleType) {
@@ -72,25 +77,11 @@ public class User implements Serializable {
 		this.roleType = roleType;
 	}
 
-	public User(Long userId, @NotNull String username, @NotNull String password, @NotNull String firstName,
-			@NotNull String lastName, @NotNull String email, @NotNull @Min(1) @Max(2) int roleId,
-			@NotNull String roleType) {
-		super();
-		this.userId = userId;
-		this.username = username;
-		this.password = password;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.roleId = roleId;
-		this.roleType = roleType;
-	}
-
-	public Long getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Long userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
@@ -150,13 +141,13 @@ public class User implements Serializable {
 		this.roleType = roleType;
 	}
 
-	public List<Reimbursement> getReimbursements() {
-		return reimbursements;
-	}
-
-	public void setReimbursements(List<Reimbursement> reimbursements) {
-		this.reimbursements = reimbursements;
-	}
+//	public List<Reimbursement> getReimbursements() {
+//		return reimbursements;
+//	}
+//
+//	public void setReimbursements(List<Reimbursement> reimbursements) {
+//		this.reimbursements = reimbursements;
+//	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -172,7 +163,7 @@ public class User implements Serializable {
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + roleId;
 		result = prime * result + ((roleType == null) ? 0 : roleType.hashCode());
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		result = prime * result + userId;
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -213,10 +204,7 @@ public class User implements Serializable {
 				return false;
 		} else if (!roleType.equals(other.roleType))
 			return false;
-		if (userId == null) {
-			if (other.userId != null)
-				return false;
-		} else if (!userId.equals(other.userId))
+		if (userId != other.userId)
 			return false;
 		if (username == null) {
 			if (other.username != null)

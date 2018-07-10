@@ -33,5 +33,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/Alex/Downloads/ojdbc7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alex/Downloads/ojdbc-12.1.0.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

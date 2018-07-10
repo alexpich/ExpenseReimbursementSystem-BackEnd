@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -17,6 +18,7 @@ public class Reimbursement implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@Id
 	@Column(name = "reimbursement_id")
 	@NotNull
 	private int reimbursementId;
@@ -61,11 +63,14 @@ public class Reimbursement implements Serializable {
 	@NotNull
 	private String type;
 
-	public Reimbursement(@NotNull int reimbursementId, @NotNull double amount, @NotNull Date timeSubmitted,
-			@NotNull Date timeResolved, @NotNull String description, @NotNull int author, @NotNull int resolver,
-			@NotNull int statusId, @NotNull int typeId, @NotNull String status, @NotNull String type) {
+	public Reimbursement() {
 		super();
-		this.reimbursementId = reimbursementId;
+	}
+
+	public Reimbursement(@NotNull double amount, @NotNull Date timeSubmitted, @NotNull Date timeResolved,
+			@NotNull String description, @NotNull int author, @NotNull int resolver, @NotNull int statusId,
+			@NotNull int typeId, @NotNull String status, @NotNull String type) {
+		super();
 		this.amount = amount;
 		this.timeSubmitted = timeSubmitted;
 		this.timeResolved = timeResolved;
